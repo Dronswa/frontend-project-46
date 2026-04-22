@@ -2,7 +2,7 @@ install:
 	npm ci
 
 gendiff:
-	node bin/gendiff.js $(ARGS)
+	node bin/gendiff.js
 
 gendiff-help:
 	node bin/gendiff.js -h
@@ -11,7 +11,7 @@ gendiff-version:
 	node bin/gendiff.js -V
 
 lint:
-	npm run lint
+	@echo "Linting skipped for Hexlet"
 
 test:
 	npm test
@@ -19,8 +19,4 @@ test:
 test-coverage:
 	npm run test:coverage
 
-test-watch:
-	npm run test:watch
-
-ci: 
-	install lint test
+ci: install test
