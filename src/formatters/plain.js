@@ -12,7 +12,7 @@ const stringify = (value) => {
 
 const formatPlain = (diff, path = '') => {
   const lines = diff
-    .filter((item) => item.type !== 'unchanged')
+    .filter(item => item.type !== 'unchanged')
     .map((item) => {
       const propertyPath = path ? `${path}.${item.key}` : item.key
 

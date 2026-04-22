@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import yaml from 'js-yaml'
 
-const parseJSON = (content) => JSON.parse(content)
-const parseYAML = (content) => yaml.load(content)
+const parseJSON = content => JSON.parse(content)
+const parseYAML = content => yaml.load(content)
 
 const getParser = (extension) => {
   switch (extension) {
