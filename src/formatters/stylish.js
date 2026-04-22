@@ -1,37 +1,37 @@
-import _ from 'lodash';
+import _ from 'lodash'
 
 const stringify = (value, depth) => {
   if (!_.isObject(value)) {
-    return String(value);
+    return String(value)
   }
 
-  const indent = '    '.repeat(depth + 1);
-  const entries = Object.entries(value);
-  const lines = entries.map(([k, v]) => `${indent}${k}: ${stringify(v, depth + 1)}`);
+  const indent = '    '.repeat(depth)
+  const entries = Object.entries(value)
+  const lines = entries.map(([key, val]) => `${indent}    ${key}: ${stringify(val, depth + 1)}`)
 
-  return `{\n${lines.join('\n')}\n${indent.slice(0, -4)}}`;
-};
+  return `{\n${lines.join('\n')}\n${indent}}`
+}
 
 const formatStylish = (diff, depth = 0) => {
-  const indent = '    '.repeat(depth);
+  const indent = '    '.repeat(depth)
   const result = diff.map((item) => {
     switch (item.type) {
-    case 'added':
-      return `${indent}  + ${item.key}: ${stringify(item.value, depth)}`;
-    case 'removed':
-      return `${indent}  - ${item.key}: ${stringify(item.value, depth)}`;
-    case 'unchanged':
-      return `${indent}    ${item.key}: ${stringify(item.value, depth)}`;
-    case 'changed':
-      return `${indent}  - ${item.key}: ${stringify(item.oldValue, depth)}\n${indent}  + ${item.key}: ${stringify(item.newValue, depth)}`;
-    case 'nested':
-      return `${indent}    ${item.key}: ${formatStylish(item.children, depth + 1)}`;
-    default:
-      return '';
+      case 'added':
+        return `${indent}  + ${item.key}: ${stringify(item.value, depth + 1)}`
+      case 'removed':
+        return `${indent}  - ${item.key}: ${stringify(item.value, depth + 1)}`
+      case 'unchanged':
+        return `${indent}    ${item.key}: ${stringify(item.value, depth + 1)}`
+      case 'changed':
+        return `${indent}  - ${item.key}: ${stringify(item.oldValue, depth + 1)}\n${indent}  + ${item.key}: ${stringify(item.newValue, depth + 1)}`
+      case 'nested':
+        return `${indent}    ${item.key}: ${formatStylish(item.children, depth + 1)}`
+      default:
+        return ''
     }
-  }).join('\n');
+  }).join('\n')
 
-  return `{\n${result}\n${indent}}`;
-};
+  return `{\n${result}\n${indent}}`
+}
 
-export default formatStylish;
+export default formatStylish
