@@ -15,7 +15,7 @@ const formatPlain = (diff, path = '') => {
     .filter((item) => item.type !== 'unchanged')
     .map((item) => {
       const propertyPath = path ? `${path}.${item.key}` : item.key;
-      
+
       switch (item.type) {
       case 'added':
         return `Property '${propertyPath}' was added with value: ${stringify(item.value)}`;
@@ -29,7 +29,7 @@ const formatPlain = (diff, path = '') => {
         return '';
       }
     });
-  
+
   return lines.join('\n');
 };
 

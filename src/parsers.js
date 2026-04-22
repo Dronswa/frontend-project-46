@@ -22,6 +22,6 @@ export default (filepath) => {
   const content = fs.readFileSync(fullPath, 'utf-8');
   const extension = path.extname(filepath);
   const parser = getParser(extension);
-  
+
   return parser(content);
 };

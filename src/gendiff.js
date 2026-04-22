@@ -4,7 +4,7 @@ import getFormatter from './formatters/index.js';
 
 const buildDiff = (obj1, obj2) => {
   const keys = _.union(Object.keys(obj1), Object.keys(obj2)).sort();
-  
+
   return keys.map((key) => {
     if (!_.has(obj1, key)) {
       return { key, type: 'added', value: obj2[key] };

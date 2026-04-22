@@ -4,7 +4,7 @@ const stringify = (value, depth) => {
   if (!_.isObject(value)) {
     return String(value);
   }
-  
+
   const indent = '    '.repeat(depth);
   const entries = Object.entries(value);
   const lines = entries.map(([key, val]) => {
@@ -13,7 +13,7 @@ const stringify = (value, depth) => {
     }
     return `${indent}    ${key}: ${val}`;
   });
-  
+
   return `{\n${lines.join('\n')}\n${indent}}`;
 };
 
@@ -35,7 +35,7 @@ const formatStylish = (diff, depth = 0) => {
       return '';
     }
   }).join('\n');
-  
+
   return `{\n${result}\n${indent}}`;
 };
 
