@@ -7,13 +7,13 @@ const parseYAML = (content) => yaml.load(content);
 
 const getParser = (extension) => {
   switch (extension) {
-  case '.json':
-    return parseJSON;
-  case '.yml':
-  case '.yaml':
-    return parseYAML;
-  default:
-    throw new Error(`Unsupported file extension: ${extension}`);
+    case '.json':
+      return parseJSON;
+    case '.yml':
+    case '.yaml':
+      return parseYAML;
+    default:
+      throw new Error(`Unsupported file extension: ${extension}`);
   }
 };
 

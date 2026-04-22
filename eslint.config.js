@@ -1,16 +1,22 @@
+import js from '@eslint/js';
+import globals from 'globals';
+
 export default [
+  js.configs.recommended,
   {
-    files: ['**/*.js'],
+    files: ['bin/**/*.js', 'src/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
+    },
     rules: {
-      'semi': 'off',
-      'indent': 'off',
-      'quotes': 'off',
+      'indent': ['error', 2],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always'],
       'no-console': 'off',
-      'no-trailing-spaces': 'off',
-      'comma-dangle': 'off',
-      'arrow-parens': 'off',
-      '@stylistic/semi': 'off',
-      '@stylistic/indent': 'off'
-    }
-  }
-]
+    },
+  },
+];

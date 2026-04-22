@@ -4,14 +4,14 @@ import json from './json.js';
 
 const getFormatter = (format) => {
   switch (format) {
-  case 'stylish':
-    return stylish;
-  case 'plain':
-    return plain;
-  case 'json':
-    return json;
-  default:
-    return stylish;
+    case 'stylish':
+      return stylish;
+    case 'plain':
+      return plain;
+    case 'json':
+      return json;
+    default:
+      return stylish;
   }
 };
 
