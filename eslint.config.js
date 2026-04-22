@@ -4,22 +4,23 @@ import globals from 'globals';
 export default [
   js.configs.recommended,
   {
-    files: ['bin/**/*.js', 'src/**/*.js'],
+    files: ['bin/**/*.js', 'src/**/*.js', '__tests__/**/*.js'],
     ignores: ['__tests__/__fixtures__/**', 'node_modules/**', 'coverage/**'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
         ...globals.node,
-        ...globals.jest
-      }
+        ...globals.jest,
+      },
     },
     rules: {
       'indent': ['error', 2],
       'quotes': ['error', 'single'],
       'semi': ['error', 'always'],
       'no-console': 'off',
-      'no-trailing-spaces': 'error'
-    }
-  }
+      'no-trailing-spaces': 'error',
+      'comma-dangle': ['error', 'never'],
+    },
+  },
 ];
